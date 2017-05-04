@@ -11,10 +11,10 @@ const plumber = require('gulp-plumber');
 const concat = require('gulp-concat');
 
 gulp.task('styles', () => {
-	return gulp.src('./src/styles/**/*.scss')
+	return gulp.src('./src/styles/*.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(concat('style.css'))
-		.pipe(gulp.dest('./public/styles'))
+		.pipe(gulp.dest('./public/scripts/'))
 });
 
 gulp.task('js', () => {
@@ -26,11 +26,11 @@ gulp.task('js', () => {
 		.bundle()
 		.on('error',notify.onError({
 			message: "Error: <%= error.message %>",
-			title: 'Error in your javascript!'
+			title: 'Error in your js!'
 		}))
 		.pipe(source('app.js'))
 		.pipe(buffer())
-		.pipe(gulp.dest('public/scripts'))
+		.pipe(gulp.dest('./public/scripts/'))
 		.pipe(reload({stream:true}));
 });
 
